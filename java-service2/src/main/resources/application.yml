@@ -1,0 +1,10 @@
+server:
+  port: 8082
+
+spring:
+  kafka:
+    streams:
+      application-id: second-application
+      bootstrap-servers: 10.35.5.56:9092
+    consumer:
+      group-id: test

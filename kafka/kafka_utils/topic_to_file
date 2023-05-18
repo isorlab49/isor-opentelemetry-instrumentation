@@ -1,0 +1,8 @@
+#!/bin/bash
+i_file=${file:-output/$topic}
+mkdir -p $(dirname "/kafka-cli/$i_file")
+
+#clear variable for next run
+export file=""
+
+.read_topic >> /kafka-cli/$i_file

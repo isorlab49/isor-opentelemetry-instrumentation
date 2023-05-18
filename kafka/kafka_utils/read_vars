@@ -1,0 +1,35 @@
+#!/bin/bash
+export kafka_env=""
+export jq_env=""
+
+export server=""
+export topic=""
+export timeout=""
+
+export jq_id=""
+export jq_script=""
+
+export file=""
+
+while [ $# -gt 0 ]; do
+    if [[ $1 == "--"* ]]; then
+        v="${1/--/}"
+        declare "$v"="$2"
+        shift
+    fi
+    shift
+done
+
+#read environment file
+kafka_env=${kafka_env:-/kafka-cli/config/kafka.env}
+source $kafka_env
+
+jq_env=${jq_env:-/kafka-cli/config/jq.env}
+source $jq_env
+
+#read variables from command line, or use env variables
+export server=${server:-$SERVER}
+export topic=${topic:-$TOPIC}
+export timeout=${timeout:-$TIMEOUT}
+export jq_id=${jq_id:-$JQ_ID}
+export jq_script=${jq_script:-$JQ_SCRIPT}

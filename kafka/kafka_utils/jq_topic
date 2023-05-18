@@ -1,0 +1,4 @@
+#!/bin/bash
+i_jq_script=$jq_script
+export jq_script=""
+. read_topic | jq "$i_jq_script" -c

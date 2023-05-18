@@ -1,0 +1,6 @@
+**/.idea/*
+**/.vscode/*
+**/.mvn/*
+**/mvn*
+**/.DS_Store
+**/*.tgz

@@ -1,0 +1,12 @@
+#!/bin/bash
+while [ $# -gt 0 ]; do
+    if [[ $1 == "--help" ]]; then
+        usage
+        exit 0
+    elif [[ $1 == "--"* ]]; then
+        v="${1/--/}"
+        export $v=""
+        shift
+    fi
+    shift
+done

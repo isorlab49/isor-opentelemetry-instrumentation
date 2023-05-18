@@ -1,0 +1,1 @@
+jq -c 'del(.message,.subthing.others[1],.subthing.others[2])' test_topic | sort | uniq

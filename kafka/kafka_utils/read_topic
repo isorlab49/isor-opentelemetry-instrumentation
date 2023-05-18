@@ -1,0 +1,12 @@
+#!/bin/bash
+i_server=$server
+export server=""
+
+i_topic=$topic
+export topic=""
+
+i_timeout=$timeout
+export timeout=""
+
+
+kafka-console-consumer.sh --bootstrap-server $i_server --topic $i_topic --from-beginning --timeout-ms $i_timeout 

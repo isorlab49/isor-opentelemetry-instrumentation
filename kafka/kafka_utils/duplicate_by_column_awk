@@ -1,0 +1,4 @@
+#!/bin/bash
+export jq_script="[\"$jq_id\",.]"
+export jq_id=""
+. jq_topic | sort -k 1,1 -s | awk -f /kafka-cli/kafka-utils/duplicate_by_id_column.awk

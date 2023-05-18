@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: opentelemetry1
+  name: opentelemetry1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opentelemetry1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: opentelemetry1
+    spec:
+      containers:
+      - image: opentelemetry1
+        imagePullPolicy: Never
+        name: opentelemetry1
+        resources: {}
+status: {}
+---
