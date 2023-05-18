@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.isor</groupId>
-	<artifactId>opentelemetry</artifactId>
+	<artifactId>java-service1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>opentelemetry</name>
-	<description>Demo project for basic opentelemetry</description>
+	<name>java-service1</name>
+	<description>Sample kafka project for testing opentelemetry</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

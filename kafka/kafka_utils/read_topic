@@ -1,12 +1,5 @@
 #!/bin/bash
-i_server=$server
-export server=""
+i_topic=${1:-test}
+i_timeout=${2:-5000}
 
-i_topic=$topic
-export topic=""
-
-i_timeout=$timeout
-export timeout=""
-
-
-kafka-console-consumer.sh --bootstrap-server $i_server --topic $i_topic --from-beginning --timeout-ms $i_timeout 
+kafka-console-consumer.sh --bootstrap-server broker:29092 --topic $i_topic --from-beginning --timeout-ms $i_timeout

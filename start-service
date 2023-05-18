@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $1
+mvn clean package -DskipTests && docker build -t $1 . && kubectl apply -f deployment.yaml
+cd ..

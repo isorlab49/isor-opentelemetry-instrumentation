@@ -3,6 +3,6 @@ server:
 
 spring:
   kafka:
-    bootstrap-servers: 10.35.5.56:9092
+    bootstrap-servers: 192.168.0.131:9092
     consumer:
       group-id: test

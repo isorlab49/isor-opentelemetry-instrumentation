@@ -3,24 +3,24 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: opentelemetry2
-  name: opentelemetry2
+    app: java-service2
+  name: java-service2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: opentelemetry2
+      app: java-service2
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: opentelemetry2
+        app: java-service2
     spec:
       containers:
-      - image: opentelemetry2
+      - image: java-service2
         imagePullPolicy: Never
-        name: opentelemetry2
+        name: java-service2
         resources: {}
 status: {}
 ---
