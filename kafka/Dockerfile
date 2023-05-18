@@ -4,7 +4,8 @@ RUN apt-get update
 RUN apt-get --assume-yes install jq vim
 
 RUN mkdir /kafka-cli
-ADD ./kafka-cli.tgz /kafka-cli
+ADD https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz /kafka-cli
+RUN tar -xzf /kafka-cli/kafka_2.12-3.4.0.tgz -C /kafka-cli && rm /kafka-cli/kafka_2.12-3.4.0.tgz
 
 ENV PATH="${PATH}:/kafka-cli/kafka_2.12-3.4.0/bin"
 
