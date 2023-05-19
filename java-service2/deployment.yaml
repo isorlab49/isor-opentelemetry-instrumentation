@@ -1,26 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  labels:
-    app: java-service2
-  name: java-service2
+  name: java-service2-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-service2
+      app: java-service2-pod
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: "true"
       labels:
-        app: java-service2
+        app: java-service2-pod
     spec:
       containers:
       - image: java-service2
         imagePullPolicy: Never
         name: java-service2
-        resources: {}
-status: {}
----

@@ -4,3 +4,6 @@
 **/mvn*
 **/.DS_Store
 **/*.tgz
+**/*.db-shm
+**/*.db-wal
+**/*.swp
