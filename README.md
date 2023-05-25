@@ -20,7 +20,12 @@ docker exec -it kafka-cli bash
 - . create_topic second-topic
 - . create_topic third-topic
 
-3) exit the container 
+
+3) exit the container
+
+**Start Jaeger with opensearch backend**
+
+docker-compose -f jaeger/jaeger.yml up -d
 
 **Start cert manager in kubernetes**
 
@@ -47,11 +52,33 @@ kubectl apply -f otel-inst.yaml
 
 python kafka/producer/producer.py
 
+#### Check traces
+
+You can access jaeger frontend at http://localhost:16686/
+
+OpenSearch dashboard is also available at http://localhost:5601/
+- in theory OpenSearch shall be accessible with admin-admin, but
+since the security is disabled due to this is only a testing project,
+and I didn't solve the problem, the dashboard cannot be accessed
+
 ### Configuration notes
 
+#### Kafka access from kubernetes cluster 
 In kafka/compose/kafka.yml KAFKA_ADVERTISED_LISTENERS has to be updated with localhost's ip.
 
+#### Java service instrumentation
+
 In both java services the bootstrap servers have to be updated with the localhost's actual ip.
+
+To have a service instrumented, you need to add
+`instrumentation.opentelemetry.io/inject-java: "true"`
+to the pod's annotations. If there are multiple containers in the same pod, the ones to be instrumented can be specified with
+`instrumentation.opentelemetry.io/container-names: "java-service1"`
+if it's not specified, the first container will be instrumented.
+
+It is possible to specify for namespace to be instrumented but i'm not sure yet how.
+
+#### OpenTelemetry instrumentation to collector connection
 
 After applying the otel-coll.yaml update the otel-inst.yaml's spec.exporter.endpoint to the otel-collector's SIMPLEST_COLLECTOR_PORT_4317_TCP_ADDR.
 You can find it in docker desktop container inspect.

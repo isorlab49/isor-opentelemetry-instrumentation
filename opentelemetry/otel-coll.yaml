@@ -12,12 +12,14 @@ spec:
     processors:
 
     exporters:
-      logging:
+      jaeger:
+        endpoint: "192.168.0.131:14250"
+        tls:
+          insecure: true
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [logging]
-
+          exporters: [jaeger]
